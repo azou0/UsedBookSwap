@@ -1,53 +1,54 @@
-const Task = require('../models/Task');
-const getTasks = async (req, res) => {
+const BookList = require('../models/bookList');
+const getBooks = async (req, res) => {
 try {
-const tasks = await Task.find({ userId: req.user.id });
-res.json(tasks);
+const books = await BookList.find({ userId: req.user.id });
+res.json(books);
 } catch (error) {
 res.status(500).json({ message: error.message });
 }
 };
 
-const addTask = async (req, res) => {
-const { title, description, deadline } = req.body;
+const addBook = async (req, res) => {
+const { title, description } = req.body;
 try {
-const task = await Task.create({ userId: req.user.id, title, description, deadline });
-res.status(201).json(task);
+const book = await BookList.create({ userId: req.user.id, title,
+      description });
+res.status(201).json(book);
 } catch (error) {
 res.status(500).json({ message: error.message });
 }
 };
 
-const updateTask = async (req, res) => {
-const { title, description, completed, deadline } = req.body;
+const updateBook = async (req, res) => {
+const { title, description, available } = req.body;
 try {
-const task = await Task.findById(req.params.id);
-if (!task) return res.status(404).json({ message: 'Task not found' });
+const book = await BookList.findById(req.params.id);
+if (!book) return res.status(404).json({ message: 'Book not found' });
 
-task.title = title || task.title;
-task.description = description || task.description;
-task.completed = completed ?? task.completed;
-task.deadline = deadline || task.deadline;
+book.title = title || book.title;
+book.description = description || book.description;
+book.available = available ?? book.available;
 
-const updatedTask = await task.save();
- res.json(updatedTask); 
-} catch (error) {
-res.status(500).json({ message: error.message });
-}
+const updatedBook = await book.save();
+    res.json(updatedBook);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+//Delete book listing
+const deleteBook = async (req, res) => {
+  try {
+    const book = await BookList.findById(req.params.id);
+    if (!book) return res.status(404).json({ message: 'Book not found' });
+
+
+ await book.remove();
+    res.json({ message: 'Book deleted' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const deleteTask = async (req, res) => {
-try {
-const task = await Task.findById(req.params.id);
-if (!task) return res.status(404).json({ message: 'Task not found' });
 
-await task.remove();
-res.json({ message: 'Task deleted' }); 
-} catch (error) {
-res.status(500).json({ message: error.message });
-}
-};
-
-
-module.exports = { getTasks, addTask, updateTask, deleteTask };
+module.exports = { getBooks, addBook, updateBook, deleteBook};
 
