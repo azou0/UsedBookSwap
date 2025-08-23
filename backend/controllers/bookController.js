@@ -1,4 +1,5 @@
 const BookList = require('../models/bookList');
+//Get all book listings for logged-in user
 const getBooks = async (req, res) => {
 try {
 const books = await BookList.find({ userId: req.user.id });
