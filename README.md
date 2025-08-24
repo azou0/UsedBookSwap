@@ -1,26 +1,37 @@
-**Task Manager Application Overview:The task manager application is designed to help users efficiently manage their tasks and responsibilities by providing a user-friendly interface for creating, viewing, updating, and deleting tasks. It includes essential features such as secure user authentication, allowing individuals to sign up and log in to their accounts, as well as profile management to update personal information. With built-in validation such as input field validation and email validation, the application ensures a seamless user experience while enhancing productivity and organization in both personal and professional settings. **
+**Used Book Swapping Platform Overview:The application is designed to help students or readers to swap their used books. It extends the task manager app by reusing the user authentication feature, and adding book‑swap–specific features such as listings, search, and simple swap requests.**
 
 **This apps **contain** the following features:**
 
-* Signup
-* Login
-* Logout
-* Update profile
-* Add tasks
-* View tasks
-* Update tasks
-* Delete tasks
+* Signup(pre-built)
+* Login(pre-built)
+* Logout(pre-built)
+* Create Book Listing
+* Edit Book Listing
+* Delete Book Listing
+* Search Book Listing
+* View Book Listing
+* View all the available book lists
+* View a specific user's available books
+* Request book swaps
+* View swapped book lists
 
 **This **app**lication** is**almost **a** precompiled** app**. However, students will develop some features,**such as adding tasks, viewing tasks, updating tasks, and **deleting** tasks**. **Students** will interact with GitHub when they develop the features.**
 
----
+**Project Setup Instructions**
+1. Clone the repository
+git clone https://github.com/azou0/UsedBookSwap.git
+cd UsedBookSwap
 
-**Prerequisite:** Please install the following software and create account in following web tools** **
+2. Install dependencies
+npm install
 
-* **Nodejs [**[https://nodejs.org/en](https://nodejs.org/en)]** **
-* **Git [**[https://git-scm.com/](https://git-scm.com/)]** **
-* **VS code editor** [[https://code.visualstudio.com/](https://code.visualstudio.com/)]** **
-* **MongoDB Account** [[https://account.mongodb.com/account/login](https://account.mongodb.com/account/login)]** - In tutorial, we have also showed how can you create account and database: follow step number 2.**
-* **GitHub Account** [[https://github.com/signup?source=login](https://github.com/signup?source=login)]** **
+3. Set up environment variables
 
----
+Create a .env file in the root folder with the following:
+
+MONGO_URI=<mongodb+srv://IFN636_new_user_0:Zq2317922967.@ifn636cluster0.xd9gpde.mongodb.net/IFN636_Database0?retryWrites=true&w=majority&appName=IFN636Cluster0>
+JWT_SECRET=2J8zqkP7VN6bxzg+Wy7DQZsd3Yx8mF3Bl0kch6HYtFs=
+PORT=5001
+
+4. Start the server
+npm run dev
