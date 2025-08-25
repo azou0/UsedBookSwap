@@ -15,8 +15,6 @@
 * Request book swaps
 * View swapped book lists
 
-**This **app**lication** is**almost **a** precompiled** app**. However, students will develop some features,**such as adding tasks, viewing tasks, updating tasks, and **deleting** tasks**. **Students** will interact with GitHub when they develop the features.**
-
 **Project Setup Instructions**
 1. Clone the repository
 git clone https://github.com/azou0/UsedBookSwap.git
