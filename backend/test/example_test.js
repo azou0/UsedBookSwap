@@ -47,12 +47,12 @@ describe('Book Controller Tests', () => {
     const req = { params: { id: bookId }, body: { title: 'Updated Title' } };
     const res = { json: sinon.spy(), status: sinon.stub().returnsThis() };
 
-    const fakeBook = { title: 'Old Title', save: sinon.stub().resolvesThis() };
-    sinon.stub(BookList, 'findById').resolves(fakeBook);
+    const Book = { title: 'Old Title', save: sinon.stub().resolvesThis() };
+    sinon.stub(BookList, 'findById').resolves(Book);
 
     await updateBook(req, res);
 
-    expect(fakeBook.title).to.equal('Updated Title');
+    expect(Book.title).to.equal('Updated Title');
     expect(res.json.calledOnce).to.be.true;
   });
 
@@ -61,8 +61,8 @@ describe('Book Controller Tests', () => {
     const req = { params: { id: bookId }, user: { id: new mongoose.Types.ObjectId().toString() } };
     const res = { json: sinon.spy(), status: sinon.stub().returnsThis() };
 
-    const fakeBook = { remove: sinon.stub().resolves() };
-    sinon.stub(BookList, 'findById').resolves(fakeBook);
+    const Book = { remove: sinon.stub().resolves() };
+    sinon.stub(BookList, 'findById').resolves(Book);
 
     await deleteBook(req, res);
 
